@@ -1,27 +1,17 @@
 package me.chancehalo.musicfeed
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import androidx.appcompat.app.AlertController
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
-import org.json.JSONArray
-import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
-import java.util.*
-import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var adapter: AlbumListAdapter
+    private lateinit var adapter: RecyclerAdapter
 
     private lateinit var linearLayoutManager: LinearLayoutManager
 
@@ -32,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         linearLayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = linearLayoutManager
-        adapter = AlbumListAdapter(albumList)
+        adapter = RecyclerAdapter(albumList)
 
 
         fetchMusicData()

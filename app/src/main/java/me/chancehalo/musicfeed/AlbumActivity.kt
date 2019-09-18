@@ -12,7 +12,7 @@ class AlbumActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.albumlist_item)
+        setContentView(R.layout.album_detail)
 
         selectedAlbum = intent.getSerializableExtra(ALBUM_KEY) as Album
 

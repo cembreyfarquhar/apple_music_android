@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.albumlist_item.view.*
 
-class AlbumListAdapter(private val albums: ArrayList<Album>) :
-    RecyclerView.Adapter<AlbumListAdapter.AlbumViewHolder>() {
+class RecyclerAdapter(private val albums: ArrayList<Album>) :
+    RecyclerView.Adapter<RecyclerAdapter.AlbumViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): View {
+    ): RecyclerAdapter.AlbumViewHolder {
         // return an inflated view
         val inflatedView = parent.inflate(R.layout.albumlist_item, false)
         return AlbumViewHolder(inflatedView)
@@ -38,10 +38,11 @@ class AlbumListAdapter(private val albums: ArrayList<Album>) :
 
 
         override fun onClick(v: View?) {
-            val context = itemView.context
-            val showAlbumItent = Intent(context, AlbumActivity::class.java)
-            showAlbumItent.putExtra(ALBUM_KEY, album)
-            context.startActivity(showAlbumItent)
+            Log.i("dev", "clicked")
+//            val context = itemView.context
+//            val showAlbumItent = Intent(context, AlbumActivity::class.java)
+//            showAlbumItent.putExtra(ALBUM_KEY, album)
+//            context.startActivity(showAlbumItent)
         }
 
         // So we can use "ALBUM" for easy reference to the item launching the RecyclerView
