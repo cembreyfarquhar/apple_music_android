@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response) {
                 Log.i("dev", "got em!")
+                Log.i("dev", response?.body?.string())
             }
 
             override fun onFailure(call: Call, e: IOException) {
