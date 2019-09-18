@@ -3,7 +3,12 @@ package me.chancehalo.musicfeed
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonObject
 import okhttp3.*
+import org.json.JSONArray
+import org.json.JSONException
+import org.json.JSONObject
 import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
@@ -26,14 +31,24 @@ class MainActivity : AppCompatActivity() {
 
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response) {
-                Log.i("dev", "got em!")
-                Log.i("dev", response?.body?.string())
+                val body = response.body?.string()
+//                Log.i("dev", body)
+                val json = JSONObject(body)
+                val feed = json.getJSONObject("feed")
+//                println(feed)
+                val results = feed.getJSONArray("results")
+                println(results[0])
             }
 
             override fun onFailure(call: Call, e: IOException) {
                 Log.i("dev", "it failed")
             }
         })
-
     }
 }
+
+class SongFeed(val songs: List<Song>)
+
+class Song(val feed: Feed)
+
+class Feed(val title: String)
