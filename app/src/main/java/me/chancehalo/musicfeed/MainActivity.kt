@@ -3,23 +3,37 @@ package me.chancehalo.musicfeed
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import androidx.appcompat.app.AlertController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
 import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var adapter: AlbumListAdapter
 
-    private val mSongList = LinkedList<String>()
+    private lateinit var linearLayoutManager: LinearLayoutManager
+
+    private val albumList = ArrayList<Album>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        linearLayoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = linearLayoutManager
+        adapter = AlbumListAdapter(albumList)
+
 
         fetchMusicData()
     }
@@ -51,8 +65,8 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-class SongFeed(val songs: List<Song>)
-
-class Song(val feed: Feed)
-
-class Feed(val title: String)
+//class SongFeed(val songs: List<Song>)
+//
+//class Song(val feed: Feed)
+//
+//class Feed(val title: String)
