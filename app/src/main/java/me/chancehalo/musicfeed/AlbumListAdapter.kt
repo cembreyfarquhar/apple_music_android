@@ -13,7 +13,7 @@ class RecyclerAdapter(private val albums: ArrayList<Album>) :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): RecyclerAdapter.AlbumViewHolder {
+    ): AlbumViewHolder {
         // return an inflated view
         val inflatedView = parent.inflate(R.layout.albumlist_item, false)
         return AlbumViewHolder(inflatedView)
