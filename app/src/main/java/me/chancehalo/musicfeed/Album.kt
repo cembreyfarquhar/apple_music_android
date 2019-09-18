@@ -6,7 +6,7 @@ import java.io.Serializable
 
 
 class Album(albumJSON: JSONObject): Serializable {
-    private lateinit var artistName: String
+    lateinit var artistName: String
     lateinit var albumTitle: String
     private set
 

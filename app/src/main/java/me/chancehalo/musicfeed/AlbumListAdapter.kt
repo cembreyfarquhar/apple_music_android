@@ -53,6 +53,7 @@ class RecyclerAdapter(private val albums: ArrayList<Album>) :
         fun bindAlbum(album: Album) {
             this.album = album
             view.albumTitle.text = album.albumTitle
+            view.artistName.text = album.artistName
         }
 
     }
