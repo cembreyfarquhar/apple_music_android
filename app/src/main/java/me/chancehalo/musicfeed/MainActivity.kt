@@ -43,15 +43,18 @@ class MainActivity : AppCompatActivity() {
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response) {
                 val body = response.body?.string()
-//                Log.i("dev", body)
                 val json = JSONObject(body)
                 val feed = json.getJSONObject("feed")
-//                println(feed)
                 val results = feed.getJSONArray("results")
-                val first = results.getJSONObject(0)
-                Log.i("dev", first.toString())
 
-                addToList(Album(first))
+                for (i in 0 until results.length()) {
+                    val album = results.getJSONObject(i)
+                    Log.i("dev", album.toString())
+                    addToList(Album(album))
+                }
+//                val first = results.getJSONObject(0)
+//                Log.i("dev", first.toString())
+//                addToList(Album(first))
             }
 
             override fun onFailure(call: Call, e: IOException) {
