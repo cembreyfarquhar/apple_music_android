@@ -10,8 +10,12 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
+
+    private val mSongList = LinkedList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
