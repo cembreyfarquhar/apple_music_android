@@ -27,8 +27,7 @@ class RecyclerAdapter(private val albums: ArrayList<Album>) :
         holder.bindAlbum(itemAlbum)
     }
 
-    class AlbumViewHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
-        private var view = v
+    class AlbumViewHolder(private val view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         private var album: Album? = null
 
         // Initialize the View.OnClickListener
@@ -39,10 +38,10 @@ class RecyclerAdapter(private val albums: ArrayList<Album>) :
 
         override fun onClick(v: View?) {
             Log.i("dev", "clicked")
-//            val context = itemView.context
-//            val showAlbumItent = Intent(context, AlbumActivity::class.java)
-//            showAlbumItent.putExtra(ALBUM_KEY, album)
-//            context.startActivity(showAlbumItent)
+            val context = itemView.context
+            val showAlbumItent = Intent(context, AlbumActivity::class.java)
+            showAlbumItent.putExtra(ALBUM_KEY, album)
+            context.startActivity(showAlbumItent)
         }
 
         // So we can use "ALBUM" for easy reference to the item launching the RecyclerView
