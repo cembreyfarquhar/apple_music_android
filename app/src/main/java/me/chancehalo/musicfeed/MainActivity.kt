@@ -14,8 +14,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var adapter: RecyclerAdapter
 
-    private lateinit var linearLayoutManager: LinearLayoutManager
-
     private lateinit var gridLayoutManager: GridLayoutManager
 
     private val albumList = ArrayList<Album>()
