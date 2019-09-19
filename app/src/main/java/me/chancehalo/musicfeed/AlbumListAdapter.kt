@@ -5,8 +5,6 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.album_detail.view.*
 import kotlinx.android.synthetic.main.albumlist_item.view.albumTitle
 import kotlinx.android.synthetic.main.albumlist_item.view.artistName
 
@@ -40,8 +38,6 @@ class RecyclerAdapter(private val albums: ArrayList<Album>) :
 
 
         override fun onClick(v: View?) {
-            val id = album?.id
-            Log.i("dev", "clicked $id")
             val context = view.context
             val showAlbumItent = Intent(context, AlbumActivity::class.java).apply {
                 putExtra(ALBUM_KEY, album)
@@ -58,7 +54,6 @@ class RecyclerAdapter(private val albums: ArrayList<Album>) :
             this.album = album
             view.albumTitle.text = album.albumTitle
             view.artistName.text = album.artistName
-//            Picasso.get().load(album.artworkUrl).into(view.albumArtworkView)
         }
 
     }
