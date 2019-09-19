@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:orientation="vertical">
+
 
     <ImageView
         android:id="@+id/albumArtworkListView"
@@ -12,35 +14,40 @@
         app:layout_constraintTop_toBottomOf="parent"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
-        android:background="@drawable/back"
+        android:foreground="@drawable/round_outline"
+        android:padding="3dp"
         android:contentDescription="album cover"
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="parent"
         >
 
         <TextView
-            android:id="@+id/artistName"
+            android:id="@+id/albumTitle"
             android:layout_width="match_parent"
-            android:layout_height="40sp"
-            android:background="@color/colorAccent"
-            android:textColor="@color/textPrimary"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/albumTitle"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/artistName"
             />
 
         <TextView
-            android:id="@+id/albumTitle"
+            android:id="@+id/artistName"
             android:layout_width="match_parent"
-            android:layout_height="40sp"
-            android:background="@color/colorAccent"
-            android:textColor="@color/textPrimary"
-            android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/artistName"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="8sp"
+            android:lines="1"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@+id/albumTitle"
             />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -55,6 +55,7 @@ class RecyclerAdapter(private val albums: ArrayList<Album>) :
             view.albumTitle.text = album.albumTitle
             view.artistName.text = album.artistName
             Picasso.get().load(album?.artworkUrl).into(view.albumArtworkListView)
+            view.albumArtworkListView.clipToOutline
         }
 
     }
