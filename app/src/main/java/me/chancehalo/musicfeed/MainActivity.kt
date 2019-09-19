@@ -24,10 +24,6 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = linearLayoutManager
         adapter = RecyclerAdapter(albumList)
         recyclerView.adapter = adapter
-//        setRecyclerViewScrollListener()
-//        gridLayoutManager = GridLayoutManager(this, 2)
-//        setRecyclerViewItemTouchListener()
-
         fetchMusicData()
     }
 
@@ -51,9 +47,6 @@ class MainActivity : AppCompatActivity() {
                     val album = results.getJSONObject(i)
                     addToList(Album(album))
                 }
-//                val first = results.getJSONObject(0)
-//                Log.i("dev", first.toString())
-//                addToList(Album(first))
             }
 
             override fun onFailure(call: Call, e: IOException) {
@@ -69,9 +62,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
-//class SongFeed(val songs: List<Song>)
-//
-//class Song(val feed: Feed)
-//
-//class Feed(val title: String)

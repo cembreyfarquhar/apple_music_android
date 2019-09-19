@@ -3,7 +3,11 @@ package me.chancehalo.musicfeed
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.album_detail.*
 import kotlinx.android.synthetic.main.albumlist_item.*
+import kotlinx.android.synthetic.main.albumlist_item.albumTitle
+import kotlinx.android.synthetic.main.albumlist_item.artistName
 
 
 class AlbumActivity : AppCompatActivity() {
@@ -20,7 +24,7 @@ class AlbumActivity : AppCompatActivity() {
 
         albumTitle?.text = selectedAlbum?.albumTitle
         artistName?.text = selectedAlbum?.artistName
-
+        Picasso.get().load(selectedAlbum?.artworkUrl).into(albumArtworkView)
     }
 
     companion object {

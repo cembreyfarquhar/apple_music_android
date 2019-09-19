@@ -5,7 +5,10 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.albumlist_item.view.*
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.album_detail.view.*
+import kotlinx.android.synthetic.main.albumlist_item.view.albumTitle
+import kotlinx.android.synthetic.main.albumlist_item.view.artistName
 
 class RecyclerAdapter(private val albums: ArrayList<Album>) :
     RecyclerView.Adapter<RecyclerAdapter.AlbumViewHolder>() {
@@ -55,6 +58,7 @@ class RecyclerAdapter(private val albums: ArrayList<Album>) :
             this.album = album
             view.albumTitle.text = album.albumTitle
             view.artistName.text = album.artistName
+//            Picasso.get().load(album.artworkUrl).into(view.albumArtworkView)
         }
 
     }
