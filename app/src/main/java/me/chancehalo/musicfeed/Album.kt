@@ -5,15 +5,17 @@ import org.json.JSONObject
 import java.io.Serializable
 
 
-class Album(albumJSON: JSONObject): Serializable {
+class Album(albumJSON: JSONObject) : Serializable {
     lateinit var artistName: String
     lateinit var albumTitle: String
-    private set
+    var id = 0
+        private set
 
     init {
         try {
             artistName = albumJSON.getString("artistName")
             albumTitle = albumJSON.getString("name")
+            id = albumJSON.getInt("id")
         } catch (e: JSONException) {
             e.printStackTrace()
         }

@@ -1,6 +1,7 @@
 package me.chancehalo.musicfeed
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.albumlist_item.*
 
@@ -18,10 +19,11 @@ class AlbumActivity : AppCompatActivity() {
 
 
         albumTitle?.text = selectedAlbum?.albumTitle
+        artistName?.text = selectedAlbum?.artistName
 
     }
 
     companion object {
-        private val ALBUM_KEY = "ALBUM"
+        private const val ALBUM_KEY = "ALBUM"
     }
 }

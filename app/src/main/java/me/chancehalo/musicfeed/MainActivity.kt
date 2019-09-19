@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
 
                 for (i in 0 until results.length()) {
                     val album = results.getJSONObject(i)
-                    Log.i("dev", album.toString())
                     addToList(Album(album))
                 }
 //                val first = results.getJSONObject(0)
