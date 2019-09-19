@@ -3,6 +3,7 @@ package me.chancehalo.musicfeed
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
@@ -15,13 +16,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var linearLayoutManager: LinearLayoutManager
 
+    private lateinit var gridLayoutManager: GridLayoutManager
+
     private val albumList = ArrayList<Album>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        linearLayoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = linearLayoutManager
+        gridLayoutManager = GridLayoutManager(this, 2)
+        recyclerView.layoutManager = gridLayoutManager
         adapter = RecyclerAdapter(albumList)
         recyclerView.adapter = adapter
         fetchMusicData()
