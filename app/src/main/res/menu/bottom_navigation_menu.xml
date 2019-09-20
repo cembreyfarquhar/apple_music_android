@@ -2,11 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/coming_soon_menu_item"
         android:title="Coming Soon"
         android:titleCondensed="Soon"
         android:icon="@drawable/ic_mail_black_24dp"
         app:showAsAction="always"
         android:visible="true"
+        android:onClick="menuClick"
         />
     <item
         android:title="New Releases"
@@ -14,6 +16,7 @@
         android:icon="@drawable/ic_new_releases_black_24dp"
         app:showAsAction="always"
         android:visible="true"
+        android:onClick="menuClick"
         />
     <item
         android:title="Top Albums"
@@ -21,6 +24,7 @@
         android:icon="@drawable/ic_album_black_24dp"
         app:showAsAction="always"
         android:visible="true"
+        android:onClick="menuClick"
         />
     <item
         android:title="Top Songs"
@@ -28,6 +32,7 @@
         android:icon="@drawable/ic_location_searching_black_24dp"
         app:showAsAction="always"
         android:visible="true"
+        android:onClick="menuClick"
         />
 
 

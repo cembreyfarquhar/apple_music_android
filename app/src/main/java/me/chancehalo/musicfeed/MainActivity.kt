@@ -2,6 +2,7 @@ package me.chancehalo.musicfeed
 
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,18 +25,65 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = gridLayoutManager
         adapter = AlbumListAdapter(albumList)
         recyclerView.adapter = adapter
-        fetchMusicData()
+        fetchMusicData("Top Albums")
     }
 
-    private fun fetchMusicData() {
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.bottom_navigation_menu, menu)
+//        return true
+//    }
+
+
+    fun menuClick(item: MenuItem) {
+        Log.i("dev", item.toString())
+        fetchMusicData(item.toString())
+
+    }
+
+    private fun fetchMusicData(type: String) {
+
+        // Types --- maybe should be a companion object?
+
+        lateinit var feedType: String
+
+        // Add better error handling?
+        when (type) {
+            "Coming Soon" -> {
+                feedType = "coming-soon"
+                Log.i("dev", "should be fetching coming-soon feed")
+            }
+            "New Releases" -> {
+                feedType = "new-releases"
+                Log.i("dev", "should be fetching new-releases feed")
+
+            }
+            "Top Albums" -> {
+                feedType = "top-albums"
+                Log.i("dev", "should be fetching top-albums feed")
+
+            }
+            "Top Songs" -> {
+                feedType = "top-songs"
+                Log.i("dev", "should be fetching top-songs feed")
+            }
+        }
+
+
         val url =
-            "https://rss.itunes.apple.com/api/v1/us/apple-music/top-albums/all/25/explicit.json"
+            "https://rss.itunes.apple.com/api/v1/us/apple-music/$feedType/all/25/explicit.json"
 
         val client = OkHttpClient()
 
         val request = Request.Builder().url(url).build()
 
-        //
+        val length = albumList.size - 1
+
+        for (_i in 0..length) {
+            val album = albumList[0]
+            albumList.remove(album)
+            adapter.notifyItemRemoved(0)
+        }
+
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response) {
                 val body = response.body?.string()
@@ -51,7 +99,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call, e: IOException) {
                 Log.i("dev", "it failed")
-                // Add better error handling
+                // Add better error handling?
                 e.printStackTrace()
             }
         })
@@ -63,4 +111,5 @@ class MainActivity : AppCompatActivity() {
             adapter.notifyItemInserted(albumList.size - 1)
         }
     }
+
 }
