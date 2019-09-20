@@ -2,10 +2,14 @@ package me.chancehalo.musicfeed
 
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.tabs.TabItem
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
@@ -26,46 +30,43 @@ class MainActivity : AppCompatActivity() {
         adapter = AlbumListAdapter(albumList)
         recyclerView.adapter = adapter
         fetchMusicData("Top Albums")
-    }
 
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.bottom_navigation_menu, menu)
-//        return true
-//    }
+        tabs.addOnTabSelectedListener(object : OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                Log.i("dev", "reselected")
+            }
 
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                Log.i("dev", "unselected")
+                val length = albumList.size - 1
+                for (_i in 0..length) {
+                    albumList.removeAt(0)
+                    adapter.notifyItemRemoved(0)
+                }
+            }
 
-    fun menuClick(item: MenuItem) {
-        Log.i("dev", item.toString())
-        fetchMusicData(item.toString())
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                val t = tab?.text
+                Log.i("dev", t.toString())
+                fetchMusicData(t.toString())
+            }
 
+        })
     }
 
     private fun fetchMusicData(type: String) {
-
-        // Types --- maybe should be a companion object?
 
         lateinit var feedType: String
 
         // Add better error handling?
         when (type) {
-            "Coming Soon" -> {
-                feedType = "coming-soon"
-                Log.i("dev", "should be fetching coming-soon feed")
-            }
-            "New Releases" -> {
-                feedType = "new-releases"
-                Log.i("dev", "should be fetching new-releases feed")
+            "Coming Soon" -> feedType = "coming-soon"
 
-            }
-            "Top Albums" -> {
-                feedType = "top-albums"
-                Log.i("dev", "should be fetching top-albums feed")
+            "New Releases" -> feedType = "new-releases"
 
-            }
-            "Top Songs" -> {
-                feedType = "top-songs"
-                Log.i("dev", "should be fetching top-songs feed")
-            }
+            "Top Albums" -> feedType = "top-albums"
+
+            "Top Songs" -> feedType = "top-songs"
         }
 
 
@@ -78,11 +79,11 @@ class MainActivity : AppCompatActivity() {
 
         val length = albumList.size - 1
 
-        for (_i in 0..length) {
-            val album = albumList[0]
-            albumList.remove(album)
-            adapter.notifyItemRemoved(0)
-        }
+//        for (_i in 0..length) {
+//            val album = albumList[0]
+//            albumList.remove(album)
+//            adapter.notifyItemRemoved(0)
+//        }
 
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response) {
