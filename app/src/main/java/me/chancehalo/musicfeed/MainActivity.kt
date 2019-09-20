@@ -11,7 +11,7 @@ import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var adapter: RecyclerAdapter
+    private lateinit var adapter: AlbumListAdapter
 
     private lateinit var gridLayoutManager: GridLayoutManager
 
@@ -22,13 +22,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         gridLayoutManager = GridLayoutManager(this, 2)
         recyclerView.layoutManager = gridLayoutManager
-        adapter = RecyclerAdapter(albumList)
+        adapter = AlbumListAdapter(albumList)
         recyclerView.adapter = adapter
         fetchMusicData()
     }
 
     private fun fetchMusicData() {
-        Log.i("dev", "attempting to fetch data")
         val url =
             "https://rss.itunes.apple.com/api/v1/us/apple-music/top-albums/all/25/explicit.json"
 
@@ -36,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         val request = Request.Builder().url(url).build()
 
+        //
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response) {
                 val body = response.body?.string()
@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call, e: IOException) {
                 Log.i("dev", "it failed")
+                // Add better error handling
             }
         })
     }

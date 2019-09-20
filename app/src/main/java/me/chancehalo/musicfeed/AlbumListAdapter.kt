@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.albumlist_item.view.*
 
-class RecyclerAdapter(private val albums: ArrayList<Album>) :
-    RecyclerView.Adapter<RecyclerAdapter.AlbumViewHolder>() {
+class AlbumListAdapter(private val albums: ArrayList<Album>) :
+    RecyclerView.Adapter<AlbumListAdapter.AlbumViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
