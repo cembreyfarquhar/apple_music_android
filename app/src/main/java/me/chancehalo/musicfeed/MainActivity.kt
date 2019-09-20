@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
             override fun onFailure(call: Call, e: IOException) {
                 Log.i("dev", "it failed")
                 // Add better error handling
+                e.printStackTrace()
             }
         })
     }
