@@ -1,18 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/top_albums_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/top_albums" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/coming_soon_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/coming_soon" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/top_songs_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/top_songs" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
         android:scrollbars="vertical" />
 
 
-</RelativeLayout>
+    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+    <!--        android:id="@+id/bottom_navigation"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="top"-->
+    <!--        android:background="@android:color/darker_gray"-->
+    <!--        app:itemIconTint="@android:color/white"-->
+    <!--        app:itemTextColor="@android:color/white"-->
+    <!--        app:menu="@menu/bottom_navigation_menu"-->
+
+    <!--        />-->
+
+</FrameLayout>
 

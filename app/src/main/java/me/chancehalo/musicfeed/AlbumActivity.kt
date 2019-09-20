@@ -1,6 +1,7 @@
 package me.chancehalo.musicfeed
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.album_detail.*
@@ -28,4 +29,5 @@ class AlbumActivity : AppCompatActivity() {
     companion object {
         private const val ALBUM_KEY = "ALBUM"
     }
+
 }
