@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="Coming Soon"
+        android:titleCondensed="Soon"
+        android:icon="@drawable/ic_mail_black_24dp"
+        app:showAsAction="always"
+        android:visible="true"
+        />
+    <item
+        android:title="New Releases"
+        android:titleCondensed="New"
+        android:icon="@drawable/ic_new_releases_black_24dp"
+        app:showAsAction="always"
+        android:visible="true"
+        />
+    <item
+        android:title="Top Albums"
+        android:titleCondensed="Top"
+        android:icon="@drawable/ic_album_black_24dp"
+        app:showAsAction="always"
+        android:visible="true"
+        />
+    <item
+        android:title="Top Songs"
+        android:titleCondensed="Songs"
+        android:icon="@drawable/ic_location_searching_black_24dp"
+        app:showAsAction="always"
+        android:visible="true"
+        />
+
+
+</menu>
+
+
+
+<!--<menu xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--    <item android:id="@[+][package:]id/resource_name"-->
+<!--        android:title="string"-->
+<!--        android:titleCondensed="string"-->
+<!--        android:icon="@[package:]drawable/drawable_resource_name"-->
+<!--        android:onClick="method name"-->
+<!--        android:showAsAction=["ifRoom" | "never" | "withText" | "always" | "collapseActionView"]-->
+<!--    android:actionLayout="@[package:]layout/layout_resource_name"-->
+<!--    android:actionViewClass="class name"-->
+<!--    android:actionProviderClass="class name"-->
+<!--    android:alphabeticShortcut="string"-->
+<!--    android:alphabeticModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
+<!--    android:numericShortcut="string"-->
+<!--    android:numericModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
+<!--    android:checkable=["true" | "false"]-->
+<!--    android:visible=["true" | "false"]-->
+<!--    android:enabled=["true" | "false"]-->
+<!--    android:menuCategory=["container" | "system" | "secondary" | "alternative"]-->
+<!--    android:orderInCategory="integer" />-->
+<!--    <group android:id="@[+][package:]id/resource name"-->
+<!--        android:checkableBehavior=["none" | "all" | "single"]-->
+<!--    android:visible=["true" | "false"]-->
+<!--    android:enabled=["true" | "false"]-->
+<!--    android:menuCategory=["container" | "system" | "secondary" | "alternative"]-->
+<!--    android:orderInCategory="integer" >-->
+<!--    <item />-->
+<!--</group>-->
+<!--<item >-->
+<!--<menu>-->
+<!--    <item />-->
+<!--</menu>-->
+<!--</item>-->
+<!--    </menu>-->
