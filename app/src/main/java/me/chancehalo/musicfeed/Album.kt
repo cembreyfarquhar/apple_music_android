@@ -1,7 +1,5 @@
 package me.chancehalo.musicfeed
 
-import android.net.Uri
-import androidx.core.net.toUri
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.Serializable
